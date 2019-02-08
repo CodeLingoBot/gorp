@@ -83,12 +83,12 @@ func (d SqlServerDialect) ToSqlType(val reflect.Type, maxsize int, isAutoIncr bo
 	return fmt.Sprintf("nvarchar(%d)", maxsize)
 }
 
-// Returns auto_increment
+// AutoIncrStr returns auto_increment
 func (d SqlServerDialect) AutoIncrStr() string {
 	return "identity(0,1)"
 }
 
-// Empty string removes autoincrement columns from the INSERT statements.
+// AutoIncrBindValue; Empty string removes autoincrement columns from the INSERT statements.
 func (d SqlServerDialect) AutoIncrBindValue() string {
 	return ""
 }
@@ -103,7 +103,7 @@ func (d SqlServerDialect) TruncateClause() string {
 	return "truncate table"
 }
 
-// Returns "?"
+// BindVar returns "?"
 func (d SqlServerDialect) BindVar(i int) string {
 	return "?"
 }

@@ -199,7 +199,7 @@ func (t *Transaction) RollbackToSavepoint(savepoint string) error {
 	return err
 }
 
-// ReleaseSavepint releases the savepoint with the given name. The name is
+// ReleaseSavepoint releases the savepoint with the given name. The name is
 // interpolated directly into the SQL SAVEPOINT statement, so you must sanitize
 // it if it is derived from user input.
 func (t *Transaction) ReleaseSavepoint(savepoint string) error {

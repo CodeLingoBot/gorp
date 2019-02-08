@@ -495,7 +495,7 @@ func (m *DbMap) DropTablesIfExists() error {
 	return m.dropTables(true)
 }
 
-// Goes through all the registered tables, dropping them one by one.
+// dropTables goes through all the registered tables, dropping them one by one.
 // If an error is encountered, then it is returned and the rest of
 // the tables are not dropped.
 func (m *DbMap) dropTables(addIfExists bool) (err error) {
@@ -516,7 +516,7 @@ func (m *DbMap) dropTables(addIfExists bool) (err error) {
 	return err
 }
 
-// Implementation of dropping a single table.
+// dropTable; Implementation of dropping a single table.
 func (m *DbMap) dropTable(t reflect.Type, name string, addIfExists bool) error {
 	table := tableOrNil(m, t, name)
 	if table == nil {

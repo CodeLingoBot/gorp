@@ -27,7 +27,7 @@ func (err *NoFieldInTypeError) Error() string {
 	return fmt.Sprintf("gorp: no fields %+v in type %s", err.MissingColNames, err.TypeName)
 }
 
-// returns true if the error is non-fatal (ie, we shouldn't immediately return)
+// NonFatalError returns true if the error is non-fatal (ie, we shouldn't immediately return)
 func NonFatalError(err error) bool {
 	switch err.(type) {
 	case *NoFieldInTypeError:

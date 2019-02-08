@@ -175,7 +175,7 @@ func (t *TableMap) SetVersionCol(field string) *ColumnMap {
 	return c
 }
 
-// SqlForCreateTable gets a sequence of SQL commands that will create
+// SqlForCreate gets a sequence of SQL commands that will create
 // the specified table and any associated schema
 func (t *TableMap) SqlForCreate(ifNotExists bool) string {
 	s := bytes.Buffer{}

@@ -92,7 +92,7 @@ func (d MySQLDialect) ToSqlType(val reflect.Type, maxsize int, isAutoIncr bool) 
 	}
 }
 
-// Returns auto_increment
+// AutoIncrStr returns auto_increment
 func (d MySQLDialect) AutoIncrStr() string {
 	return "auto_increment"
 }
@@ -105,7 +105,7 @@ func (d MySQLDialect) AutoIncrInsertSuffix(col *ColumnMap) string {
 	return ""
 }
 
-// Returns engine=%s charset=%s  based on values stored on struct
+// CreateTableSuffix returns engine=%s charset=%s  based on values stored on struct
 func (d MySQLDialect) CreateTableSuffix() string {
 	if d.Engine == "" || d.Encoding == "" {
 		msg := "gorp - undefined"
@@ -142,7 +142,7 @@ func (d MySQLDialect) SleepClause(s time.Duration) string {
 	return fmt.Sprintf("sleep(%f)", s.Seconds())
 }
 
-// Returns "?"
+// BindVar returns "?"
 func (d MySQLDialect) BindVar(i int) string {
 	return "?"
 }

@@ -161,7 +161,7 @@ func argsString(args ...interface{}) string {
 	return margs
 }
 
-// Calls the Exec function on the executor, but attempts to expand any eligible named
+// maybeExpandNamedQueryAndExec calls the Exec function on the executor, but attempts to expand any eligible named
 // query arguments first.
 func maybeExpandNamedQueryAndExec(e SqlExecutor, query string, args ...interface{}) (sql.Result, error) {
 	dbMap := extractDbMap(e)

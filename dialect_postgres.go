@@ -70,7 +70,7 @@ func (d PostgresDialect) ToSqlType(val reflect.Type, maxsize int, isAutoIncr boo
 
 }
 
-// Returns empty string
+// AutoIncrStr returns empty string
 func (d PostgresDialect) AutoIncrStr() string {
 	return ""
 }
@@ -83,7 +83,7 @@ func (d PostgresDialect) AutoIncrInsertSuffix(col *ColumnMap) string {
 	return " returning " + d.QuoteField(col.ColumnName)
 }
 
-// Returns suffix
+// CreateTableSuffix returns suffix
 func (d PostgresDialect) CreateTableSuffix() string {
 	return d.suffix
 }
@@ -104,7 +104,7 @@ func (d PostgresDialect) SleepClause(s time.Duration) string {
 	return fmt.Sprintf("pg_sleep(%f)", s.Seconds())
 }
 
-// Returns "$(i+1)"
+// BindVar returns "$(i+1)"
 func (d PostgresDialect) BindVar(i int) string {
 	return fmt.Sprintf("$%d", i+1)
 }

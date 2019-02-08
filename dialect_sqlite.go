@@ -55,7 +55,7 @@ func (d SqliteDialect) ToSqlType(val reflect.Type, maxsize int, isAutoIncr bool)
 	return fmt.Sprintf("varchar(%d)", maxsize)
 }
 
-// Returns autoincrement
+// AutoIncrStr returns autoincrement
 func (d SqliteDialect) AutoIncrStr() string {
 	return "autoincrement"
 }
@@ -68,7 +68,7 @@ func (d SqliteDialect) AutoIncrInsertSuffix(col *ColumnMap) string {
 	return ""
 }
 
-// Returns suffix
+// CreateTableSuffix returns suffix
 func (d SqliteDialect) CreateTableSuffix() string {
 	return d.suffix
 }
@@ -81,14 +81,14 @@ func (d SqliteDialect) DropIndexSuffix() string {
 	return ""
 }
 
-// With sqlite, there technically isn't a TRUNCATE statement,
+// TruncateClause; With sqlite, there technically isn't a TRUNCATE statement,
 // but a DELETE FROM uses a truncate optimization:
 // http://www.sqlite.org/lang_delete.html
 func (d SqliteDialect) TruncateClause() string {
 	return "delete from"
 }
 
-// Returns "?"
+// BindVar returns "?"
 func (d SqliteDialect) BindVar(i int) string {
 	return "?"
 }
@@ -101,7 +101,7 @@ func (d SqliteDialect) QuoteField(f string) string {
 	return `"` + f + `"`
 }
 
-// sqlite does not have schemas like PostgreSQL does, so just escape it like normal
+// QuotedTableForQuery; sqlite does not have schemas like PostgreSQL does, so just escape it like normal
 func (d SqliteDialect) QuotedTableForQuery(schema string, table string) string {
 	return d.QuoteField(table)
 }

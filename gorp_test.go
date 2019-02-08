@@ -1121,7 +1121,7 @@ delete from `+tableName(dbmap, PersistentUser{})+`
 	}
 }
 
-// Ensure that the slices containing SQL results are non-nil when the result set is empty.
+// TestReturnsNonNilSlice ensures that the slices containing SQL results are non-nil when the result set is empty.
 func TestReturnsNonNilSlice(t *testing.T) {
 	dbmap := initDbMap()
 	defer dropAndClose(dbmap)
@@ -1202,7 +1202,7 @@ func TestOptimisticLocking(t *testing.T) {
 	}
 }
 
-// what happens if a legacy table has a null value?
+// TestDoubleAddTable checks a case when what happens if a legacy table has a null value?
 func TestDoubleAddTable(t *testing.T) {
 	dbmap := newDbMap()
 	t1 := dbmap.AddTable(TableWithNull{}).SetKeys(false, "Id")
@@ -1212,7 +1212,7 @@ func TestDoubleAddTable(t *testing.T) {
 	}
 }
 
-// what happens if a legacy table has a null value?
+// TestNullValues checks a case when what happens if a legacy table has a null value?
 func TestNullValues(t *testing.T) {
 	dbmap := initDbMapNulls()
 	defer dropAndClose(dbmap)
@@ -2085,6 +2085,7 @@ func parseTimeOrPanic(format, date string) time.Time {
 	return t1
 }
 
+// testWithTime; 
 // TODO: re-enable next two tests when this is merged:
 // https://github.com/ziutek/mymysql/pull/77
 //
@@ -2105,6 +2106,7 @@ func testWithTime(t *testing.T) {
 	}
 }
 
+// testEmbeddedTime checks a case when 
 // See: https://github.com/go-gorp/gorp/issues/86
 func testEmbeddedTime(t *testing.T) {
 	dbmap := newDbMap()

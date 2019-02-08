@@ -71,7 +71,7 @@ func (d OracleDialect) ToSqlType(val reflect.Type, maxsize int, isAutoIncr bool)
 
 }
 
-// Returns empty string
+// AutoIncrStr returns empty string
 func (d OracleDialect) AutoIncrStr() string {
 	return ""
 }
@@ -84,7 +84,7 @@ func (d OracleDialect) AutoIncrInsertSuffix(col *ColumnMap) string {
 	return ""
 }
 
-// Returns suffix
+// CreateTableSuffix returns suffix
 func (d OracleDialect) CreateTableSuffix() string {
 	return ""
 }
@@ -93,12 +93,12 @@ func (d OracleDialect) TruncateClause() string {
 	return "truncate"
 }
 
-// Returns "$(i+1)"
+// BindVar returns "$(i+1)"
 func (d OracleDialect) BindVar(i int) string {
 	return fmt.Sprintf(":%d", i+1)
 }
 
-// After executing the insert uses the ColMap IdQuery to get the generated id
+// InsertQueryToTarget; After executing the insert uses the ColMap IdQuery to get the generated id
 func (d OracleDialect) InsertQueryToTarget(exec SqlExecutor, insertSql, idSql string, target interface{}, params ...interface{}) error {
 	_, err := exec.Exec(insertSql, params...)
 	if err != nil {
